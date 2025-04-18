@@ -74,10 +74,18 @@ Creating a Matrix:
 
 You need the data (as a float array) and the shape (as an int array). The total number of elements in the data array must match the product of the dimensions in the shape array.
 
+
+```c
 // Example: Create a 2x3 matrix
-    float matrix_data[] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f}; // 6 elements
-    int matrix_shape[] = {2, 3}; // Shape: 2 rows, 3 columns
-    int matrix_dims = 2; // Number of dimensions
+
+float matrix_data[] = {1.0f, 2.0f, 3.0f,4.0f, 5.0f, 6.0f}; // 6 elements
+
+int matrix_shape[] = {2, 3}; // Shape: 2 rows, 3 columns
+
+int matrix_dims = 2; // Number of dimensions
+```
+
+
 
     Matrix_float* mat_a = matrix_float_create(matrix_data, matrix_shape, matrix_dims);
     if (!mat_a) 
@@ -102,12 +110,13 @@ Printing a Matrix:
 
 Use matrix_float_print to see the contents and shape.
 
+```c
 printf("Matrix A:\n");
-    matrix_float_print(mat_a, stdout);
+matrix_float_print(mat_a, stdout);
 
-    printf("\nMatrix B:\n");
-    matrix_float_print(mat_b, stdout);
-
+printf("\nMatrix B:\n");
+matrix_float_print(mat_b, stdout);
+```
 
 
 Matrix Operations:
