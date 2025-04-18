@@ -83,28 +83,24 @@ float matrix_data[] = {1.0f, 2.0f, 3.0f,4.0f, 5.0f, 6.0f}; // 6 elements
 int matrix_shape[] = {2, 3}; // Shape: 2 rows, 3 columns
 
 int matrix_dims = 2; // Number of dimensions
+
+Matrix_float* mat_a = matrix_float_create(matrix_data, matrix_shape, matrix_dims);
+if (!mat_a) 
+{
+     fprintf(stderr, "Failed to create matrix A\n");
+     return 1; // Or handle error appropriately
+}
+
+// Example: Create another 2x3 matrix
+float matrix_data_b[] = {7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f};
+Matrix_float* mat_b = matrix_float_create(matrix_data_b, matrix_shape, matrix_dims);
+if (!mat_b) 
+{
+ fprintf(stderr, "Failed to create matrix B\n");
+ matrix_float_destroy(mat_a); // Clean up previously created matrix
+ return 1;
+}
 ```
-
-
-
-    Matrix_float* mat_a = matrix_float_create(matrix_data, matrix_shape, matrix_dims);
-    if (!mat_a) 
-    {
-        fprintf(stderr, "Failed to create matrix A\n");
-        return 1; // Or handle error appropriately
-    }
-
-    // Example: Create another 2x3 matrix
-    float matrix_data_b[] = {7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f};
-    Matrix_float* mat_b = matrix_float_create(matrix_data_b, matrix_shape, matrix_dims);
-     if (!mat_b) 
-     {
-        fprintf(stderr, "Failed to create matrix B\n");
-        matrix_float_destroy(mat_a); // Clean up previously created matrix
-        return 1;
-     }
-
-
 
 Printing a Matrix:
 
@@ -117,6 +113,44 @@ matrix_float_print(mat_a, stdout);
 printf("\nMatrix B:\n");
 matrix_float_print(mat_b, stdout);
 ```
+
+The equivalent in tensorflow would be:
+
+```c
+import tensorflow as tf
+
+# Define the data and shape
+matrix_data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+matrix_shape = [2, 3]
+matrix_dims = len(matrix_shape)  # == 2
+
+# Create the tensor (matrix)
+mat_a = tf.constant(matrix_data, shape=matrix_shape, dtype=tf.float32)
+
+print(mat_a)
+```
+Output:
+
+```c
+tf.Tensor(
+[[1. 2. 3.]
+[4. 5. 6.]], shape=(2, 3), dtype=float32)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Matrix Operations:
