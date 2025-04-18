@@ -39,6 +39,7 @@ Tutorial: Using the buildTensorflow_float C Library
 
 First, include the library header and standard C libraries you might need:
 
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -62,6 +63,8 @@ int main() {
     printf("Tutorial Finished.\n");
     return 0;
 }
+```
+
 
 2. Matrices (Matrix_float)
 
